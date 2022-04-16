@@ -42,14 +42,6 @@ function getValueOrThrow<TValue>({
     input = validator.default;
   }
 
-  if (!isSet(input)) {
-    let errMessage = `Missing value`;
-    if (!validator.allowEmpty) {
-      errMessage += ' or empty string';
-    }
-    throw new MissingEnvError(errMessage);
-  }
-
   const output = validator._parse(input);
 
   if (validator.choices && !validator.choices.includes(output)) {
